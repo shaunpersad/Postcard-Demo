@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <!-- Google Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
 
     <!-- jQueryUI -->
     <!--<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />-->
@@ -31,11 +31,3 @@
 
     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 </head>
-<body>
-
-<div id="main-container" class="container">
-
-    <header>
-
-        <h2>Postcard Demo</h2>
-    </header>

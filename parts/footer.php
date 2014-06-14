@@ -1,5 +1,3 @@
-
-</div>
 <div id="popup">
 
     <h3>please wait...</h3>
@@ -8,9 +6,6 @@
             <span>45%</span>
         </div>
     </div>
-
-
-
 </div>
 <!-- jQuery -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
