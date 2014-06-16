@@ -3,7 +3,7 @@
 .image-viewport-container {
 
     width: 100%;
-    padding-bottom: 56.25%;
+    padding-bottom: 70.8%;
     position: relative;
     margin-bottom: 30px;
 }
@@ -17,8 +17,7 @@
     bottom: 0;
 }
 
-
-#image-container, #preview-front, #preview-back {
+#image-container, #message-image-container, #preview-front, #preview-back {
 
 
     width: 100%;
@@ -55,10 +54,37 @@
 .rotate-buttons {
 
     margin-bottom: 30px;
+    width: 100%;
 }
-#image-zoomer {
+
+.rotate-buttons button {
+
+    width: 50%;
+}
+
+#image-zoomer.ui-widget-content {
 
     margin-bottom: 30px;
+    background: none;
+    background: #fff;
+    height: 1px;
+    border: 0 none;
+}
+#image-zoomer.ui-widget-content a {
+
+    background: none;
+    background-image:url('../images/icon-resize.png');
+    background-repeat: no-repeat;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -o-border-radius: 0px;
+    border-radius: 0px;
+    border: 0px;
+    border: none;
+    width: 32px;
+    height: 32px;
+    top: -12px;
+
 }
 
 label.error {
@@ -92,17 +118,29 @@ label.error {
 
 html, body {
 
-    font-family: 'Oswald', sans-serif;
+    font-family: 'oswaldbook', sans-serif;
     color: #fff;
     height: 100%;
 }
 
-.btn {
+.btn, input {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -o-border-radius: 0px;
     border-radius: 0px;
+}
+
+input {
     border: 0px;
+}
+
+h2 {
+    font-size: 36px;
+    font-family: 'oswaldbook', sans-serif;
+}
+
+h2 span {
+    font-family: 'oswaldlight', sans-serif;
 }
 
 .helper {
@@ -110,16 +148,11 @@ html, body {
     height: 100%;
     vertical-align: middle;
 }
+.container-fluid {
 
-body.intro, body.intro-detail {
-
-    background-image: url('../images/bg-1.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    width: 100%;
-    height: 100%
+    padding-bottom: 40px;
 }
+
 #intro-header {
     font-size: 40px;
     text-align: center;
@@ -153,6 +186,9 @@ body.intro, body.intro-detail {
     border-bottom: 1px solid #fff;
     text-align: center;
     height: 130px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
 }
 #intro-movements-list .btn.last {
 
@@ -166,7 +202,7 @@ body.intro, body.intro-detail {
 #intro-detail-header {
     text-align: center;
     margin-top: 40px;
-    margin-bottom: 70px;
+    margin-bottom: 50px;
 }
 
 #intro-detail-content {
@@ -176,12 +212,14 @@ body.intro, body.intro-detail {
 #intro-detail-content p {
 
     font-size: 28px;
-    font-weight: 300;
+    font-family: 'oswaldlight', sans-serif;
     padding: 0;
     padding-bottom: 40px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-#intro-detail-content .btn {
+.btn.btn-custom {
 
     background: none;
     border: 5px solid #fff;
@@ -190,11 +228,422 @@ body.intro, body.intro-detail {
     padding-right: 50px;
     color: #fff;
 }
-#intro-detail-content .btn img {
+
+.btn.btn-custom:hover {
+
+    background-image: url('../images/bg-btn-custom.png');
+}
+
+.btn.btn-custom img {
 
     padding-bottom: 10px;
     padding-left: 10px;
 }
 
+input[type="text"]:focus {
+
+    -webkit-box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.82);
+    -moz-box-shadow:    0px 0px 35px 0px rgba(0, 0, 0, 0.82);
+    box-shadow:         0px 0px 35px 0px rgba(0, 0, 0, 0.82);
+}
+
+.file-upload.btn.btn-custom {
+
+    font-size: 20px;
+    font-family: 'oswaldlight', sans-serif;
+    border-width: 3px;
+}
+
+.file-upload.btn.btn-custom label.error {
+
+    display: none !important;
+}
 
 
+#upload-header {
+
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+#upload-header .row {
+
+    width: 480px;
+    margin: 0 auto;
+}
+
+#upload-header .white-line {
+
+}
+
+#upload-header .btn {
+    text-decoration: none;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+    display: block;
+    background: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 0;
+}
+
+#upload-header #btn-upload-photo {
+    background-image: url('../images/btn-upload-off.png');
+}
+#upload-header #btn-upload-photo:hover, #upload-header #btn-upload-photo.on {
+    background-image: url('../images/btn-upload-on.png');
+}
+#upload-header #btn-edit-photo {
+    background-image: url('../images/btn-edit-off.png');
+}
+#upload-header #btn-edit-photo:hover, #upload-header #btn-edit-photo.on {
+    background-image: url('../images/btn-edit-on.png');
+}
+#upload-header #btn-add-message {
+    background-image: url('../images/btn-message-off.png');
+}
+#upload-header #btn-add-message:hover, #upload-header #btn-add-message.on {
+    background-image: url('../images/btn-message-on.png');
+}
+#upload-header #btn-preview {
+    background-image: url('../images/btn-preview-off.png');
+}
+#upload-header #btn-preview:hover, #upload-header #btn-preview.on {
+    background-image: url('../images/btn-preview-on.png');
+}
+
+.form-group-button {
+
+    text-align: center;
+}
+.form-group-button .btn {
+
+    margin-top: 30px;
+}
+
+.file-upload {
+    position: relative;
+    overflow: hidden;
+}
+.file-upload input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    /* IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+
+    /* IE 5-7 */
+    filter: alpha(opacity=0);
+
+    /* Netscape */
+    -moz-opacity: 0;
+
+    /* Safari 1.x */
+    -khtml-opacity: 0;
+
+    /* Good browsers */
+    opacity: 0;
+}
+
+.filepath {
+
+    width: 100%;
+    overflow: hidden;
+}
+
+
+#checkmark {
+
+    visibility: hidden;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+
+
+.skinny-content {
+
+    width: 400px;
+    margin: 0 auto;
+}
+
+form h2 {
+
+    margin-bottom: 25px;
+}
+form label {
+
+    font-size: 25px;
+    font-family: 'oswaldbook', sans-serif;
+    margin-bottom: 25px;
+}
+form input[type="text"] {
+
+    height: 65px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -o-border-radius: 0px;
+    border-radius: 0px;
+    border: 0px;
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+.help-block {
+
+    font-family: 'oswaldlight', sans-serif;
+    color: #fff;
+}
+
+#message-image-container {
+
+    background-color: #fff;
+    background-image: url('../images/postcard-back.jpg');
+}
+
+#message-image-container textarea {
+
+    width: 45%;
+    height: 100%;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -o-border-radius: 0px;
+    border-radius: 0px;
+    border: 0 none;
+    overflow: hidden;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    resize: none;
+    font-family: 'oswaldlight', sans-serif;
+    font-size: 12pt;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 0;
+    margin: 0;
+    color: #000;
+}
+
+#preview .image-viewport-container {
+
+    margin-top: 25px;
+}
+
+#intro-detail-content a {
+
+    font-family: 'oswaldbook', sans-serif;
+    color: #fff;
+}
+
+#intro-detail-content ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+}
+
+#intro-detail-content ul li {
+    display: inline;
+}
+#intro-detail-content ul li h2, #intro-detail-content ul li a {
+
+    display: inline;
+    padding-left: 15px;
+}
+#intro-detail-content ul li a img {
+
+    margin-bottom: 20px;
+}
+
+.upload-row {
+
+    display: none;
+
+}
+#upload-photo.upload-row {
+    display: block;
+}
+
+.footer {
+
+    font-size: 20px;
+    text-align: center;
+}
+
+.footer span {
+
+}
+.footer img {
+
+    width: 80px;
+    margin-bottom: 5px;
+}
+
+img.bg {
+    /* Set rules to fill background */
+    min-height: 100%;
+    min-width: 1024px;
+
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+@media (max-width: 1024px) { /* Specific to this particular image */
+    img.bg {
+        left: 50%;
+        margin-left: -512px;   /* 50% */
+    }
+}
+
+@media (max-width : 768px) {
+    /* Styles */
+    #intro-header span {
+        display: block;
+    }
+    #intro-movements-list {
+        width: 100%;
+    }
+    #upload-header .row {
+
+        width: auto;
+    }
+    #message-image-container textarea {
+
+        font-size: 2.5vw;
+    }
+}
+@media (max-width : 540px) {
+
+    #intro-detail-header img {
+        width: 100%;
+    }
+    #intro-detail-content p {
+        font-size: 20px;
+    }
+
+    #upload-header .btn {
+        width: 65px;
+        height: 65px;
+        background-size: contain;
+    }
+    .skinny-content {
+        width: 100%;
+    }
+    #intro-detail-content h2 {
+
+        font-size: 30px;
+    }
+    #intro-detail-content ul li a img {
+
+        margin-bottom: 20px;
+        width: 30px;
+    }
+    .footer {
+        font-size: 15px;
+    }
+
+}
+@media (max-width : 400px) {
+    /* Styles */
+    #upload-header, #intro-detail-header {
+        margin-bottom: 25px;
+        margin-top: 20px;
+    }
+    #upload-header .btn {
+        width: 45px;
+        height: 45px;
+    }
+    #intro-header span {
+
+        font-size: 25px;
+    }
+    #intro-movements-list .btn {
+        height: 65px;
+    }
+    #intro-detail-content p {
+        font-size: 14px;
+    }
+    .btn.btn-custom {
+
+        border: 3px solid #fff;
+        font-size: 20px;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    .btn.btn-custom img {
+
+        padding-bottom: 5px;
+        padding-left: 5px;
+        width: 33px;
+    }
+
+    .file-upload.btn.btn-custom {
+
+        font-size: 10px;
+        border-width: 2px;
+    }
+
+    h2, form label {
+
+        font-size: 14px;
+    }
+    form input[type="text"] {
+
+        height: 35px;
+        font-size: 12px;
+    }
+    .help-block {
+
+        font-size: 10px;
+    }
+    form label,form input[type="text"] {
+
+        margin-bottom: 12px;
+    }
+    .form-group-button .btn {
+        margin-top: 15px;
+    }
+
+    .rotate-buttons {
+
+        margin-bottom: 15px;
+    }
+    .rotate-buttons img {
+
+        width: 20px;
+    }
+    #intro-detail-content p {
+
+        padding-bottom: 20px;
+    }
+    #intro-detail-content h2 {
+
+        font-size: 15px;
+    }
+    #intro-detail-content ul li a img {
+        margin-bottom: 8px;
+        width: 25px;
+    }
+    #intro-detail-content ul li h2, #intro-detail-content ul li a {
+
+        padding-left: 10px;
+    }
+    .footer {
+
+        font-size: 10px;
+    }
+    .footer img {
+        width: 70px;
+    }
+}

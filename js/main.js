@@ -1,4 +1,5 @@
 var rotate_angle = 0;
+var wordwrap_len = 30;
 
 var image_data = {};
 var $bar;
@@ -8,38 +9,35 @@ var $bar;
 
 function setupImage(url) {
 
-    $('#edit-photo').fadeIn('fast');
-    $('html, body').animate({
-        scrollTop: $("#edit-photo").offset().top
-    }, 'fast');
+    showUploadRow('#edit-photo', function() {
 
-    var $image = $('<img id="image" />');
-    $image.load(function() {
+        var $image = $('<img id="image" />');
+        $image.load(function() {
 
-        $('#image-container').html($image).css('background', 'none');
+            $('#image-container').html($image).css('background', 'none');
 
-        var image_width = $image.width();
+            var image_width = $image.width();
 
-        $image.draggable({
-            cursor: 'move'
+            $image.draggable({
+                cursor: 'move'
+            });
+
+            $( '#image-zoomer' ).slider({
+                value:image_width,//500 is slider's width,
+                min: 0,
+                max:image_width,
+                slide: function( event, ui ) {
+                    $image.width(ui.value);
+                },
+                change: function( event, ui ) {
+                    $image.width(ui.value);
+                }
+            });
+            $('#image-zoomer').slider('value', $('#image-container').width());
+
         });
-
-        $( '#image-zoomer' ).slider({
-            value:image_width,//500 is slider's width,
-            min: 0,
-            max:image_width,
-            slide: function( event, ui ) {
-                $image.width(ui.value);
-            },
-            change: function( event, ui ) {
-                $image.width(ui.value);
-            }
-        });
-        $('#image-zoomer').slider('value', $('#image-container').width());
-
+        $image.attr('src', url);
     });
-    $image.attr('src', url);
-
 
 }
 
@@ -96,8 +94,8 @@ function progressIndicator(event, position, total, percentComplete) {
 (function addXhrProgressEvent($) {
     var originalXhr = $.ajaxSettings.xhr;
     $.ajaxSetup({
-        progress: function() { console.log("standard progress callback"); },
-        progressUpload: function() { console.log("standard upload progress callback"); },
+        progress: function() {  },
+        progressUpload: function() {},
         xhr: function() {
             var req = originalXhr(), that = this;
             if (req.upload) {
@@ -142,6 +140,65 @@ function dataURLToBlob(dataURL) {
     return new Blob([uInt8Array], {type: contentType});
 }
 
+function wordwrap(str, int_width, str_break, cut) {
+    //  discuss at: http://phpjs.org/functions/wordwrap/
+    // original by: Jonas Raoni Soares Silva (http://www.jsfromhell.com)
+    // improved by: Nick Callen
+    // improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+    // improved by: Sakimori
+    //  revised by: Jonas Raoni Soares Silva (http://www.jsfromhell.com)
+    // bugfixed by: Michael Grier
+    // bugfixed by: Feras ALHAEK
+    //   example 1: wordwrap('Kevin van Zonneveld', 6, '|', true);
+    //   returns 1: 'Kevin |van |Zonnev|eld'
+    //   example 2: wordwrap('The quick brown fox jumped over the lazy dog.', 20, '<br />\n');
+    //   returns 2: 'The quick brown fox <br />\njumped over the lazy<br />\n dog.'
+    //   example 3: wordwrap('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
+    //   returns 3: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod \ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim \nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea \ncommodo consequat.'
+
+    var m = ((arguments.length >= 2) ? arguments[1] : 75);
+    var b = ((arguments.length >= 3) ? arguments[2] : '\n');
+    var c = ((arguments.length >= 4) ? arguments[3] : false);
+
+    var i, j, l, s, r;
+
+    str += '';
+
+    if (m < 1) {
+        return str;
+    }
+
+    for (i = -1, l = (r = str.split(/\r\n|\n|\r/))
+        .length; ++i < l; r[i] += s) {
+        for (s = r[i], r[i] = ''; s.length > m; r[i] += s.slice(0, j) + ((s = s.slice(j))
+            .length ? b : '')) {
+            j = c == 2 || (j = s.slice(0, m + 1)
+                .match(/\S*(\s)?$/))[1] ? m : j.input.length - j[0].length || c == 1 && m || j.input.length + (j = s.slice(
+                    m)
+                .match(/^\S*/))[0].length;
+        }
+    }
+
+    return r.join('\n');
+}
+
+function showUploadRow(row_to_show, callback) {
+
+    $('.upload-row').hide();
+    $(row_to_show).fadeIn('fast', function() {
+
+        $('html, body').animate({
+            scrollTop: 0
+        }, 'fast', callback);
+    });
+
+    $('.on').removeClass('on');
+    var button = row_to_show.replace('#', '#btn-');
+    $(button).prop('disabled', false).addClass('on');
+
+}
+
+
 $(document).ready(function(e) {
 
     $bar = $('.progress-bar');
@@ -153,7 +210,19 @@ $(document).ready(function(e) {
         'js/fancybox/fancybox_overlay.png',
         'js/fancybox/fancybox_sprite.png',
         'js/fancybox/fancybox_sprite@2x.png',
-        'images/loading.gif'
+        'images/loading.gif',
+        'images/btn-edit-off.png',
+        'images/btn-edit-on.png',
+        'images/btn-facebook.png',
+        'images/btn-google.png',
+        'images/btn-twitter.png',
+        'images/btn-message-off.png',
+        'images/btn-message-on.png',
+        'images/btn-upload-off.png',
+        'images/btn-upload-on.png',
+        'images/btn-preview-on.png',
+        'images/btn-preview-off.png',
+        'images/bg-btn-custom.png'
     ];
 
     $.each(preload, function(index, src) {
@@ -164,6 +233,10 @@ $(document).ready(function(e) {
 
     //showModal();
 
+
+    $( '#image-zoomer' ).slider({
+
+    });
 
     if (FileAPI.support.html5 && FileAPI.support.dataURI) {
 
@@ -199,7 +272,7 @@ $(document).ready(function(e) {
 
                             // Resize image on by max side.
                             FileAPI.Image(image_file)
-                                .resize(1600, 1600, 'max')
+                                .resize(1200, 1200, 'max')
                                 .get(function (err/**String*/, img/**HTMLElement*/){
 
 
@@ -208,7 +281,6 @@ $(document).ready(function(e) {
                                         img.toBlob(
                                             function (blob) {
 
-                                                console.log(blob);
                                                 var data = new FormData();
 
                                                 data.append('name', $('input[name="name"]').val());
@@ -224,7 +296,6 @@ $(document).ready(function(e) {
                                                             var percentComplete = Math.floor(evt.loaded / evt.total * 100);
                                                             progressIndicator(null, null, null, percentComplete);                                                }
                                                         else {
-                                                            console.log("Length not computable.");
                                                         }
                                                     },
                                                     progressUpload: function(evt) {
@@ -232,7 +303,6 @@ $(document).ready(function(e) {
                                                             var percentComplete = Math.floor(evt.loaded / evt.total * 100);
                                                             progressIndicator(null, null, null, percentComplete);                                                }
                                                         else {
-                                                            console.log("Length not computable.");
                                                         }
                                                     },
                                                     type: method,
@@ -321,6 +391,17 @@ $(document).ready(function(e) {
     }
 
     $(document)
+        .on('change', '#file', function() {
+
+            $('.filepath').html($(this).val().replace('fakepath', '...'));
+            $('#checkmark').css('visibility', 'visible');
+        })
+        .on('keyup', 'textarea[name="message"]', function() {
+
+            var old_val = $(this).val();
+
+            $(this).val(wordwrap(old_val, wordwrap_len, '\n', true));
+        })
         .on('click', '#rotate-left', function() {
 
             $("#image").rotate({angle: rotate_angle-=90});
@@ -359,13 +440,7 @@ $(document).ready(function(e) {
             $edited_image.css('left', $image.css('left'));
             $edited_image.attr('src', $image.attr('src'));
 
-            $('#add-message').fadeIn('fast', function() {
-
-            });
-            $('html, body').animate({
-                scrollTop: $("#add-message").offset().top
-            }, 'fast');
-
+            showUploadRow('#add-message');
 
         })
         .on('submit', '#add-message form', function(e) {
@@ -376,8 +451,15 @@ $(document).ready(function(e) {
 
             if ($(this).valid()) {
 
+                var $textarea = $(this).find('textarea[name="message"]');
+                var color =  $textarea.css('color').match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
                 var data = {
-                    message: $(this).find('textarea[name="message"]').val()
+                    message: $textarea.val(),
+                    font_size: parseInt($textarea.css('font-size')) * 72 / 96,
+                    container_width: $('#message-image-container').width(),
+                    wordwrap: wordwrap_len,
+                    color: [color[1], color[2], color[3]]
+
                 };
 
 
@@ -397,12 +479,8 @@ $(document).ready(function(e) {
                                 alert(response.error);
                             } else {
 
-                                $('#preview').fadeIn('fast', function() {
+                                showUploadRow('#preview');
 
-                                });
-                                $('html, body').animate({
-                                    scrollTop: $("#preview").offset().top
-                                }, 'fast');
 
                                 var $message_image = $('<img id="message-image" />');
                                 $message_image.load(function() {
@@ -419,6 +497,16 @@ $(document).ready(function(e) {
             }
 
         })
+        .on('click', '#upload-header .btn', function() {
+
+            if (!$(this).prop('disabled')) {
+
+                var row_to_show = $(this).attr('id').replace('btn-', '');
+                showUploadRow('#' + row_to_show);
+
+            }
+        })
+        /*
         .on('submit', '#preview form', function(e) {
 
             e.preventDefault();
@@ -454,7 +542,7 @@ $(document).ready(function(e) {
             });
 
         })
+        */
     ;
-
 
 });

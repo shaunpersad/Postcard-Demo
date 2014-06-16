@@ -22,20 +22,28 @@ if (!empty($_POST)) {
     try {
 
 
-        $img = WideImage::load($root.BLANK_POSTCARD);
-        $img = $img->resize(POSTCARD_WIDTH, POSTCARD_HEIGHT, 'fill');
+        $img = WideImage::load($root.POSTCARD_BACK);
 
         if (!empty($message)) {
 
             $canvas = $img->getCanvas();
 
+            $container_width = $_POST['container_width'];
+            $font_size = $_POST['font_size'];
+
+            $width = $img->getWidth();
+            $calc_font_size = ($font_size / $container_width) * $width;
+            $top = (10 / $container_width) * $width;
+
             $font = $root.FONT;
-            $font_size = 16;
-            $font_color = $img->allocateColor(0, 0, 0);
+            //$font_size = 12;
+            $font_size = $calc_font_size;
+            $font_color = $img->allocateColor($_POST['color'][0], $_POST['color'][1], $_POST['color'][2]);
+
 
             $canvas->useFont($font, $font_size, $font_color);
 
-            $canvas->writeText('top + 20', 'left + 20', $message);
+            $canvas->writeText('top + '.$top, 'left + '.$top, $message);
         }
 
     } catch (\WideImage\Exception\Exception $e) {

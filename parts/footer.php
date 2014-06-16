@@ -1,3 +1,4 @@
+</div>
 <div id="popup">
 
     <h3>please wait...</h3>
@@ -49,7 +50,7 @@
 <script src="js/jquery-rotate-compressed.js"></script>
 
 <!-- application javascript -->
-<script src="js/main.js?v=2.6"></script>
+<script src="js/main.js?v=2.8"></script>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <!--
