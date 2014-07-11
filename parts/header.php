@@ -41,7 +41,7 @@ $share_copy = 'Join me and send a FREE postcard to Congress to support better en
     <link rel="stylesheet" href="js/fancybox/jquery.fancybox.css">
 
     <!-- application css -->
-    <link rel="stylesheet" href="css/main.css?v=3">
+    <link rel="stylesheet" href="css/main.css?v=4">
 
     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 </head>

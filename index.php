@@ -10,7 +10,7 @@ include 'parts/header.php'; ?>
         <div class="row">
             <div class="col-lg-12" id="intro-header">
 
-                <span>Please choose a</span><img src="images/logo-postcard.png" /><span>powered movement.</span>
+                <span>Please choose a <b>Warner Bros</b></span><img src="images/logo-postcard.png" /><span>powered movement.</span>
             </div>
         </div>
 
@@ -20,13 +20,13 @@ include 'parts/header.php'; ?>
 
                 <div id="intro-movements-list">
 
-                    <a class="btn btn-block" href="intro-detail.php" style="background-image: url('images/movement-participant-media.png');">
+                    <a class="btn btn-block" href="intro-detail.php" style="background-image: url('images/movement-msf.png');">
                     </a>
-                    <a class="btn btn-block" href="intro-detail.php" style="background-image: url('images/movement-seattle-seahawks.png');">
+                    <a class="btn btn-block" href="intro-detail.php" style="background-image: url('images/movement-hfh.png');">
                     </a>
-                    <a class="btn btn-block" href="intro-detail.php" style="background-image: url('images/movement-free-the-children.png');">
+                    <a class="btn btn-block" href="intro-detail.php" style="background-image: url('images/movement-autism.png');">
                     </a>
-                    <a class="btn btn-block last" href="intro-detail.php" style="background-image: url('images/movement-positive-tails.png');">
+                    <a class="btn btn-block last" href="intro-detail.php" style="background-image: url('images/movement-wwf.png');">
                     </a>
 
                 </div>
