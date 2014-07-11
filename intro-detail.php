@@ -20,7 +20,7 @@ include 'parts/header.php'; ?>
 
                     <p>
                         By sending a free postcard to Doctors Without Borders/Médecins Sans Frontières (MSF), you will join the
-                        Warner Brothers community in support of emergency medical relief for victims of war and disaster,
+                        Warner Bros. community in support of emergency medical relief for victims of war and disaster,
                         regardless of politics, race, religion, or ethnicity in over 70 countries around the world.
                     </p>
 

@@ -21,14 +21,14 @@ include 'parts/header.php'; ?>
                     <h2>THANK YOU!</h2>
                     <br />
                     <p>
-                        Thank you for joining the Warner Brothers mission to support to Doctors Without Borders/Médecins Sans
+                        Thank you for joining the Warner Bros. mission to support to Doctors Without Borders/Médecins Sans
                         Frontières (MSF) and their effort to bring emergency medical aid to people affected by conflict, epidemics,
                         disasters, or exclusion from healthcare around the world. Your postcard will be hand delivered to doctors working
                         on the front lines in South Sudan. Photos of those doctors receiving your postcards will be featured on
                         Médecins Sans Frontières’ website this fall.
                     </p>
                     <p>
-                        If you’d like to learn more about Warner Brothers' relationship with Doctors Without Borders/Médecins Sans
+                        If you’d like to learn more about Warner Bros.' relationship with Doctors Without Borders/Médecins Sans
                         Frontières (MSF), and the other charities you have chosen, please visit <a target="_blank" href="http://www.wbcitizenship.com">www.wbcitizenship.com</a>.
 
                     </p>

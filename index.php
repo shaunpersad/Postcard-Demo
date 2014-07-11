@@ -10,7 +10,7 @@ include 'parts/header.php'; ?>
         <div class="row">
             <div class="col-lg-12" id="intro-header">
 
-                <span>Please choose a <b>Warner Bros</b></span><img src="images/logo-postcard.png" /><span>powered movement.</span>
+                <span>Please choose a <b>Warner Bros.</b></span><img src="images/logo-postcard.png" /><span>powered movement.</span>
             </div>
         </div>
 
